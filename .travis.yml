@@ -1,0 +1,22 @@
+ sudo: required
+ services:
+    - docker
+
+before_install:
+    - docker build -t anandp_pandav/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+    - docker run -e CI=true anandp_pandav/react-test npm test -- --watchAll=false
+
+after _success:
+    - docker build -t anandp_pandav/multi-client ./client
+    - docker build -t anandp_pandav/multi-nginx ./nginx
+    - docker build -t anandp_pandav/multi-server ./server
+    - docker build -t anandp_pandav/multi-worker ./worker
+    # Login to docker CLI
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    # Push images to docker hub
+    - docker push anandp_pandav/multi-client
+    - docker push anandP-pandav/multi-nginx
+    - docker push anandp_pandav/multi-server
+    - docker push anandp_pandav/multi-worker
