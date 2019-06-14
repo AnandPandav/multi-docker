@@ -16,7 +16,7 @@ after _success:
   # Login to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to docker hub
-  - docker push anandp_pandav/multi-client
-  - docker push anandP-pandav/multi-nginx
-  - docker push anandp_pandav/multi-server
-  - docker push anandp_pandav/multi-worker
+  - docker push anandpandav/multi-client
+  - docker push anandpandav/multi-nginx
+  - docker push anandpandav/multi-server
+  - docker push anandpandav/multi-worker
