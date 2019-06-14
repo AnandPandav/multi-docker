@@ -9,10 +9,10 @@ script:
   - docker run anandp_pandav/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t anandp_pandav/multi-client ./client
-  - docker build -t anandp_pandav/multi-nginx ./nginx
-  - docker build -t anandp_pandav/multi-server ./server
-  - docker build -t anandp_pandav/multi-worker ./worker
+  - docker build -t anandpandav/multi-client ./client
+  - docker build -t anandpandav/multi-nginx ./nginx
+  - docker build -t anandpandav/multi-server ./server
+  - docker build -t anandpandav/multi-worker ./worker
   # Login to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to docker hub
