@@ -6,7 +6,7 @@ before_install:
   - docker build -t anandp_pandav/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker anandp_pandav/react-test npm test -- --coverage
+  - docker run anandp_pandav/react-test npm test -- --coverage
 
 after _success:
   - docker build -t anandp_pandav/multi-client ./client
